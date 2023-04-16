@@ -4,8 +4,7 @@ void add_value(map<int, int> &m, int x, int y);
 int find_value(map<int, int> &m, int x);
 void print_contents(map<int, int> &m);
 int main()
-{
-    // your code goes here
+{
     int t;
     cin >> t;
     while (t--)
@@ -42,7 +41,7 @@ void add_value(map<int, int> &m, int x, int y)
 {
     m.insert({x, y});
     m[x] = y;
-    // Your code here
+    
 }
 int find_value(map<int, int> &m, int x)
 {
