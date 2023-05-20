@@ -1,0 +1,41 @@
+#include <bits/stdc++.h> 
+void bfs(int row,int col,vector<vector<int>>&grid,vector<vector<int>>&vis,int n,int m,int &area){
+        vis[row][col]=1;
+        queue<pair<int,int>>q;
+        q.push({row,col});
+        int dx[8] = {-1,-1,0,1,1,1,0,-1};
+        int dy[8] = {0,1,1,1,0,-1,-1,-1};
+
+
+        while(!q.empty()){
+           // auto it = q.front();
+            int r=q.front().first; 
+            int c=q.front().second;
+            q.pop();
+            area++;
+            for(int i= 0;i<8;i++)
+            {
+                int nrow = dx[i]+r;
+                int ncol = dy[i]+c;
+                if(nrow>=0&& nrow<n && ncol>=0 && ncol<m && !vis[nrow][ncol] && grid[nrow][ncol] == 1)              {               
+                    vis[nrow][ncol] =1;
+                    q.push({nrow,ncol});
+                }
+            }
+        }
+    }
+int maxAreaOfIsland(vector<vector<int>>& grid, int n, int m) {
+    // Write your code here.
+     int ans=0;
+        vector<vector<int>>vis(n,vector<int>(m,0));
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(!vis[i][j] && grid[i][j]== 1){
+                    int area = 0;
+                    bfs(i,j,grid,vis,n,m,area);
+                    ans = max(ans,area);
+                }
+            }
+        }
+        return ans;
+}
