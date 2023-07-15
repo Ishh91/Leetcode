@@ -11,7 +11,6 @@ void removeKey(unordered_map<int, int> &m, int x);
 
 int main()
 {
-    // your code goes here
     int t;
     cin >> t;
     while (t--)
@@ -53,8 +52,6 @@ int main()
 void add_value(unordered_map<int, int> &m, int x, int y)
 {
     m[x] = y;
-
-    // Your code here
 }
 int find_value(unordered_map<int, int> &m, int x)
 {
@@ -68,10 +65,8 @@ int find_value(unordered_map<int, int> &m, int x)
 int getSize(unordered_map<int, int> &m)
 {
     return m.size();
-    // Your code here
 }
 void removeKey(unordered_map<int, int> &m, int x)
 {
     m.erase(x);
-    // Your code here
 }
