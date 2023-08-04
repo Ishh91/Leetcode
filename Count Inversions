@@ -1,0 +1,96 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution{
+  public:
+    // arr[]: Input Array
+    // N : Size of the Array arr[]
+    // Function to count inversions in the array.
+    
+
+
+   long long int  merge(long long int arr[], long long int l, long long int m, long long int r)
+    {
+        long long int n1=m-l+1;
+        long long int n2=r-m;
+        long long int left[n1],right[n2],i;
+        for( i=0;i<n1;i++){
+            left[i]=arr[i+l];
+        }
+        for(long long int j=0;j<n1;j++){
+            right[j]=arr[j+m+1];
+        }
+        i=0;long long int j=0;
+        long long int k=l;long long int res=0;
+        while(i<n1&&j<n2){
+            if(left[i]<=right[j]){
+                arr[k]=left[i];
+                i++;k++;
+            }
+            if(left[i]>right[j]){
+                arr[k]=right[j];res=res+n1-i;
+                j++;k++;
+            }
+            
+        }
+        while(i<n1||j<n2){
+           if(i<n1){
+               arr[k]=left[i];
+               i++;k++;
+           } 
+           if(j<n2){
+               arr[k]=right[j];
+               j++;k++;
+           } 
+            
+            
+        }
+        
+        
+        return res;
+        
+     }
+      long long int mergeSort(long long int arr[], long long int l, long long int r)
+    {   long long int res=0;
+        if(l<r){
+        int m=(l+r)/2;
+        res+=mergeSort(arr,l,m);
+        res+=mergeSort(arr,m+1,r);
+        res+=merge(arr,l,m,r);
+    }
+    return res;
+    }
+    long long int inversionCount(long long arr[], long long N)
+    {
+        return mergeSort(arr,0,N-1);
+
+    }
+
+};
+
+//{ Driver Code Starts.
+
+int main() {
+    
+    long long T;
+    cin >> T;
+    
+    while(T--){
+        long long N;
+        cin >> N;
+        
+        long long A[N];
+        for(long long i = 0;i<N;i++){
+            cin >> A[i];
+        }
+        Solution obj;
+        cout << obj.inversionCount(A,N) << endl;
+    }
+    
+    return 0;
+}
+
+// } Driver Code Ends
