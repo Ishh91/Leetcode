@@ -1,14 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 void add_value(unordered_map<int, int> &m, int x, int y);
-
 int find_value(unordered_map<int, int> &m, int x);
-
 int getSize(unordered_map<int, int> &m);
-
 void removeKey(unordered_map<int, int> &m, int x);
-
 int main()
 {
     int t;
