@@ -55,7 +55,6 @@ int find_value(unordered_map<int, int> &m, int x)
         return m[x];
     }
     return -1;
-    // Your code here
 }
 int getSize(unordered_map<int, int> &m)
 {
